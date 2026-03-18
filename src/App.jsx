@@ -1,6 +1,13 @@
 import RunCounter from './Runs'
 import './App.css'
 import Counte from './Counter'
+import User from './user'
+import { Suspense } from 'react'
+
+
+const UserInteface = fetch ('https://jsonplaceholder.typicode.com/posts')
+.then(res => res.json())
+
 
 function App() {
   function handleClick (){
@@ -17,7 +24,9 @@ function App() {
 
   return (
     <>
-  
+  <Suspense fallback={<h2>Loading.....</h2>}>
+    <User UserInteface={UserInteface} ></User>
+  </Suspense>
   <RunCounter></RunCounter>
     <Counte></Counte>
   
